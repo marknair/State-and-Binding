@@ -2,33 +2,31 @@
 //  ContentView.swift
 //  State and Binding
 //
-//  Created by Mark Nair on 11/11/23.
+//  Created by [YOUR NAME GOES HERE]
 //
 
 import SwiftUI
 
 
 struct ContentView: View {
-    @State private var isPlaying = false
+    var counter = 1
     
     var body: some View {
         VStack {
             Button {
-                isPlaying.toggle()
+                counter += 1
             } label: {
-                if isPlaying {
-                    Image(systemName: "stop.circle.fill")
-                        .font(.system(size: 150))
-                        .foregroundColor(.red)
-                } else {
-                    Image(systemName: "play.circle.fill")
-                        .font(.system(size: 150))
-                        .foregroundColor(.green)
-                    
-                }
+                Circle()
+                    .frame(width: 200, height: 200)
+                    .foregroundStyle(.red)
+                    .overlay {
+                        Text("\(counter)")
+                            .font(.system(size: 100, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white)
+                    }
             }
+            
         }
-        .padding()
     }
 }
 
